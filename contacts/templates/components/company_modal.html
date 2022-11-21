@@ -1,0 +1,77 @@
+<!-- Main modal -->
+<div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="company-modal">
+    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center lg:block lg:p-0">
+        <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
+        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle w-full m-4 lg:my-8 lg:align-middle lg:max-w-lg lg:w-full"
+             role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="bg-white px-12 py-12 ">
+                <form class="w-full" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm"
+                            >
+                                Company Name
+                            </label>
+                            {{ formCompany.name }}
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm"
+                        >
+                            Industry
+                        </label>
+                        <div class="relative">
+                            {{ formCompany.industry_id }}
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm"
+                                   for="grid-last-name">Website
+                            </label>
+                            {{ formCompany.website }}
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm"
+                                   for="grid-first-name">
+                                Tax Id
+                            </label>
+                            {{ formCompany.tax_id }}
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm"
+                                   for="grid-state">
+                                Logo Company
+                            </label>
+                            {{ formCompany.logo_company }}
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <button type="button"
+                                class="ml-auto py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2 text-3xl lg:text-sm"
+                                onclick="companyModal()"><i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button type="submit"
+                                class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2 text-3xl lg:text-sm">
+                            <i
+                                    class="fas fa-plus"></i> Create
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

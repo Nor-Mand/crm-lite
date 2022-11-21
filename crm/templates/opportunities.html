@@ -1,0 +1,24 @@
+{% include 'crm-base.html' %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+  <div class="container px-5  mx-auto">
+    <div class="flex justify-between mb-2 mt-2 w-full px-5">
+      <h1 class="sm:text-2xl text-2xl mb-2 text-gray-500">Opportunities</h1>
+        <a href="" class="ml-auto mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+            </svg>
+        </a>
+        <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </a>
+    </div>
+  </div>
+    {% block content-opportunity %}
+    
+    {% endblock content-opportunity %}
+</section>
+{% endblock content %}

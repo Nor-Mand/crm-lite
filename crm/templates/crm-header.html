@@ -1,0 +1,29 @@
+<header class="text-gray-600 body-font border-b border-gray-300">
+  <div class="px-10 flex flex-wrap pt-3 pb-3 flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      {% load static %}
+        <img  alt="Logo Company" class="w-20 h-20 lg:w-10  lg:h-10 object-contain object-center  inline-block " src="{% static 'isotipo.png' %}">
+      <span class="ml-3 text-4xl lg:text-xl">CRM</span>
+    </a>
+    <nav class="mr-auto ml-4 py-1 pl-4 border-l border-gray-400flex flex-wrap items-center text-base justify-center">
+      <a href="/crm/opportunities/kanban/" class="mr-5 text-gray-400 hover:text-indigo-600 cursor-pointer text-xl lg:text-base">Opportunities</a>
+      <a href="/crm/reports/" class="mr-5 text-gray-400 hover:text-indigo-600 cursor-pointer text-xl lg:text-sm">Reports</a>
+      <a href="{% url 'contacts:contact-list' %}" class="mr-5 text-gray-400 hover:text-indigo-600 cursor-pointer text-xl lg:text-base">Contacts</a>
+      <a href="{% url 'contacts:company-list' %}" class="mr-5 text-gray-400 hover:text-indigo-600 cursor-pointer text-xl lg:text-base">Companies</a>
+    </nav>
+      {% if request.user.is_authenticated %}
+        Hello, {{ request.user.username }}
+          <a href="{% url 'logout' %}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-0 ml-4 text-xl lg:text-sm">Log out
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      {% else %}
+        <a href="{% url 'login' %}" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-0 lg:text-sm">Log in
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      {% endif %}
+  </div>
+</header>

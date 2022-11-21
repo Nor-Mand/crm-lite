@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM | Leads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+<body>
+    {% include 'crm-header.html' %}
+    {% block content %}
+
+    {% endblock content%}
+    {% include 'components/opportunity_modal.html' %}
+    {% include 'components/contact_modal.html' %}
+    {% include 'components/company_modal.html' %}
+    {% include 'components/company_modal_delete.html' %}
+    {% block scripts %}
+    {% endblock scripts %}
+    <script>
+        function opportunityModal() {
+          document.getElementById('opportunity-modal').classList.toggle('hidden')
+        }
+        function deleteModal() {
+          document.getElementById('delete-modal').classList.toggle('hidden')
+        }
+        function companyModal() {
+          document.getElementById('company-modal').classList.toggle('hidden')
+        }
+        function companyModalDelete() {
+          document.getElementById('company-modal-delete').classList.toggle('hidden')
+        }
+        function CompanyDeleteModal() {
+          document.getElementById('company-delete-modal').classList.toggle('hidden')
+        }
+        function contactModal() {
+          document.getElementById('contact-modal').classList.toggle('hidden')
+        }
+        function contactModalDelete() {
+          document.getElementById('contact-modal-delete').classList.toggle('hidden')
+        }
+    </script>
+</body>
+</html>

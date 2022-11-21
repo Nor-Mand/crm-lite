@@ -1,0 +1,66 @@
+{% include 'crm-base.html' %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
+        <a href="" class="text-sm mb-2 text-gray-500 hover:text-indigo-500">Updating /<span class="text-gray-500 ml-2"> {{ company.name }}</span>
+        </a>
+    </div>
+    <div class="px-40">
+        <div class=" bg-white rounded-lg text-left overflow-hidden shadow-xl  ">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <form class="w-full" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-password">
+                                Company Name
+                            </label>
+                            {{  formCompany.name }}
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-first-name">
+                              Website
+                            </label>
+                             {{  formCompany.website }}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-last-name">Industry
+                            </label>
+                            {{  formCompany.industry_id }}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-city">
+                                Tax ID
+                            </label>
+                                {{ formCompany.tax_id }}
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            {% if company.logo_company %}
+                              {% load static %}
+                                <div class="flex justify-center"><img alt="Imagen Contact"
+                                        class="lg:w-1/3 w-full lg:h-auto h-64 object-cover object-center rounded"
+                                        src="{{ company.logo_company.url }}"></div>
+                              {% else %}
+                              No image found.
+                              {% endif %}
+                             {{  formCompany.logo_company }}
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                         <a href="{% url 'contacts:company-list' %}" type="button" class="ml-auto py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2">Cancel
+                    </a>
+                    <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2"><i
+                            class="fas fa-plus"></i> Save
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</div>
+</section>
+{% endblock content%}

@@ -1,0 +1,79 @@
+{% include 'crm-base.html' %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
+        <a href="" class="text-sm mb-2 text-gray-500 hover:text-indigo-500">Updating /<span class="text-gray-500 ml-2"> {{ company.name }}</span>
+        </a>
+    </div>
+    <div class="px-40">
+        <div class=" bg-white rounded-lg text-left overflow-hidden shadow-xl  ">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <form class="w-full" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-password">
+                                Company Name
+                            </label>
+                            {{  formContacts.full_name }}
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-first-name">
+                              Email
+                            </label>
+                             {{  formContacts.email }}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-last-name">Street
+                            </label>
+                            {{  formContacts.street }}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-city">
+                                Phone
+                            </label>
+                                {{ formContacts.phone }}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-city">
+                                Country
+                            </label>
+                                {{ formContacts.country }}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-city">
+                                Company
+                            </label>
+                                {{ formContacts.company_id }}
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            {% if contacts.image_person %}
+                              {% load static %}
+                                <div class="flex justify-center"><img alt="Imagen Contact"
+                                        class="lg:w-1/3 w-full lg:h-auto h-64 object-cover object-center rounded"
+                                        src="{{ contacts.image_person.url }}"></div>
+                              {% else %}
+                              No image found.
+                              {% endif %}
+                            <label class="block capitalize tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                   for="grid-first-name">
+                              Image Contact
+                            </label>
+                             {{  formContacts.image_person }}
+                        </div>
+                    </div>
+                    <div class="flex">
+                         <a href="{% url 'contacts:contact-list' %}" type="button" class="ml-auto py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2">Cancel
+                    </a>
+                    <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2"><i
+                            class="fas fa-plus"></i> Save
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</div>
+</section>
+{% endblock content%}

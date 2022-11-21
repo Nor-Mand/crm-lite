@@ -1,0 +1,49 @@
+{% include 'crm-base.html' %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
+        <a href="{% url 'contacts:contact-list' %}" class="text-sm mb-2 text-gray-500 hover:text-indigo-500">Contact detail /<span class="text-gray-500 ml-2"> {{ partners.full_name }}</span>
+        </a>
+        <a href="{% url 'contacts:contact-update' partners.pk %}" class="flex ml-auto mr-4 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Edit</a>
+        <button onclick="contactModalDelete()" class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>
+    </div>
+
+  <div class="container px-5 py-24 mx-auto">
+
+    <div class="mx-40 items-center flex flex-wrap">
+      <div class="lg:w-4/6 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ partners.full_name }}</h1>
+        <div class="flex mb-4">
+          <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Email</span>
+          <span class="ml-auto text-gray-900">{{ partners.email }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Phone</span>
+          <span class="ml-auto text-gray-900">{{ partners.phone }}</span>
+        </div>
+        <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+          <span class="text-gray-500">Country</span>
+          <span class="ml-auto text-gray-900">{{ partners.get_country_display }}</span>
+        </div>
+          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+          <span class="text-gray-500">Company</span>
+          <span class="ml-auto text-gray-900">{{ partners.company_id }}</span>
+        </div>
+      </div>
+      <div class="lg:w-2/6 w-full flex justify-center" >
+          {% if partners.image_person %}
+          {% load static %}
+          <img alt="Imagen Contact" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{ partners.image_person.url }}">
+          {% else %}
+          No image found.
+          {% endif %}
+      </div>
+    </div>
+  </div>
+    {% include 'components/contact_modal_delete.html' %}
+</section>
+{% endblock content%}

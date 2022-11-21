@@ -1,0 +1,46 @@
+{% include 'crm-base.html' %}
+{% load crm_currency %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+    <div class="w-full px-8 flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
+        <a href="{% url 'crm:kanban-opportunity' %}" class="text-sm mb-2 text-gray-500 hover:text-indigo-500">Pipeline detail /<span class="text-gray-500 ml-2"> {{ leads.name }}</span>
+        </a>
+        <a href="{% url 'leads:lead-update' leads.pk %}" class="flex ml-auto mr-4 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Edit</a>
+        <button onclick="deleteModal()" class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>
+    </div>
+
+  <div class="container px-5 py-24 mx-auto">
+    <div class="mx-40 items-center flex flex-wrap">
+      <div class="lg:w-4/6 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ leads.company_id }}</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ leads.name }}</h1>
+        <div class="flex mb-4">
+          <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+        </div>
+        <p class="leading-relaxed mb-4">{{ leads.description }}</p>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Contact</span>
+          <span class="ml-auto text-gray-900">{{ leads.partner_id }}</span>
+        </div>
+        <div class="flex border-t border-gray-200 py-2">
+          <span class="text-gray-500">Status</span>
+          <span class="ml-auto text-gray-900">{{ leads.stage_id }}</span>
+        </div>
+        <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+          <span class="text-gray-500">Date Deadline</span>
+          <span class="ml-auto text-gray-900">{{ leads.date_deadline }}</span>
+        </div>
+        <div class="flex justify-end">
+          <span class="title-font font-medium text-2xl text-gray-900">{{ leads.expect_revenue|currency}}</span>
+        </div>
+      </div>
+      <div class="lg:w-2/6 w-full flex justify-center" >
+          {% load static %}
+          <img alt="Logo Company" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{leads.company_id.logo_company.url}}">
+      </div>
+    </div>
+  </div>
+    {% include 'components/delete_modal.html' %}
+</section>
+{% endblock content%}

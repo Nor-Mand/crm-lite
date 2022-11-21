@@ -1,0 +1,92 @@
+<!-- Main modal -->
+<div class="fixed z-10 overflow-y-auto top-0 w-full left-0 right-0 hidden" id="opportunity-modal">
+    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center lg:block lg:p-0">
+        <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
+        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle w-full m-4 lg:my-8 lg:align-middle lg:max-w-lg lg:w-full"
+             role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="bg-white px-12 py-12 ">
+                <form class="w-full" method="POST">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
+                                Opportunity
+                            </label>
+                            {{  formOpportunity.name }}
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
+                              Expected Revenue
+                            </label>
+                             {{  formOpportunity.expect_revenue }}
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">Expected Closing
+                            </label>
+                            {{  formOpportunity.date_deadline }}
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-2">
+                        <div class="w-full  px-3 mb-6 md:mb-0">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
+                                Company
+                            </label>
+                            <div class="relative">
+                                {{ formOpportunity.company_id }}
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="w-full  px-3 mb-6 md:mb-0">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
+                                Customer
+                            </label>
+                            <div class="relative">
+                                {{ formOpportunity.partner_id }}
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full px-3 mb-6 md:mb-0">
+                            <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
+                                Stage
+                            </label>
+                            <div class="relative">
+                                {{ formOpportunity.stage_id }}
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 20 20">
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex mt-10">
+                         <button type="button" class="ml-auto py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2 text-3xl lg:text-sm"
+                            onclick="opportunityModal()"><i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2 text-3xl lg:text-sm"><i
+                            class="fas fa-plus"></i> Create
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

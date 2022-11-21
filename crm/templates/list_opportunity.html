@@ -1,0 +1,65 @@
+{% include 'crm-base.html' %}
+{% load crm_currency %}
+
+{% block content %}
+<section class="text-gray-600 body-font">
+  <div class="w-full px-8 flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <h1 class="text-xl mb-2 text-gray-500 lg:text-sm lg:text-sm">List view</h1>
+        </a>
+        <div class="md:ml-auto md:mr-auto flex flex-wrap items-center text-xl justify-center">
+            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }} - {{ leads|length }} Leads</p>
+        </div>
+         <a href="{% url 'leads:kanban-opportunity' %}" class="{% if "/crm/opportunities/kanban/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+            </svg>
+        </a>
+        <a href="{% url 'leads:list-opportunity'%}" class="{% if "/crm/opportunities/list/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </a>
+        <button class="flex text-white text-xl bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded lg:text-sm" onclick="opportunityModal()">New</button>
+    </div>
+<div class="w-full mx-auto overflow-auto">
+      <table class="table-auto w-full text-left whitespace-no-wrap">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm rounded-tl rounded-bl">Opportunity</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Company</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Contact Name</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Created on</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Expected Revenue</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Expected Closing</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Stage</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for lead in leads|dictsortreversed:"create_date" %}
+          <tr class="{% cycle '' 'bg-gray-100' %}">
+            <td class="px-4 py-2 text-sm text-gray-900 ">{{ lead.name }}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.company_id|default_if_none:"--"  }} </td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.partner_id }}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.create_date|date:"d/m/Y" }}</td>
+            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.expect_revenue|currency }}</td>
+            <td class="px-4 py-2 text-sm  {% now "d-m-Y" as todays_date %}{% if lead.date_deadline|date:"d/m/Y" < todays_date   %} text-red-500 {% else %} text-gray-900 {% endif %}">{{ lead.date_deadline|date:"d/m/Y"  }}</td>
+            <td class="px-4 py-2 text-sm text-gray-900 ">
+
+                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded
+                 {% if lead.stage_id.name == 'Won' %}
+                 dark:bg-indigo-200 dark:text-indigo-900
+                 {% elif lead.stage_id.name == 'Lost' %}
+                 dark:bg-red-200 dark:text-red-900
+                 {% else %}
+                 dark:bg-gray-200 dark:text-gray-900
+                 {% endif %}
+                 ">{{ lead.stage_id }}</span>
+                </td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</section>
+{% endblock content %}
