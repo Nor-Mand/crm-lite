@@ -31,7 +31,7 @@
                 <td>
                     {% if contact.image_person %}
                     {% load static %}
-                <img alt="Imagen Profile" class="w-10 h-10  object-contain object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="{{ contact.image_person.url }}">
+                <img alt="Imagen Profile" class="w-10 h-10  object-cover object-top rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="{{ contact.image_person.url }}">
                     {% endif %}
                 </td>
                 <td class="px-4 py-2 text-sm text-gray-900"><a class="underline decoration-solid" href="{% url 'contacts:contact-detail' contact.pk %}" class="hover:text-indigo-500">{{ contact.full_name }}</a></td>
