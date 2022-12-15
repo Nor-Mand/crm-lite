@@ -27,7 +27,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY '))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -145,8 +145,6 @@ LOGOUT_REDIRECT_URL = "/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# INTERNAL_IPS = [
-#     # ...
-#     "127.0.0.1",
-#     # ...
-# ]
+# Railway configuration
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
