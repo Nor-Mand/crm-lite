@@ -13,9 +13,11 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-   "dependencies": {
+
+  "dependencies": {
      "tailwindcss": "^3.1.6"
    },
+
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
@@ -26,6 +28,6 @@
     "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
     "postcss-simple-vars": "^6.0.3",
-    "rimraf": "^3.0.2",
+    "rimraf": "^3.0.2"
   }
-},
+}
