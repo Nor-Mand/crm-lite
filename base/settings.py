@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # Dependencies
-    'tailwind',
+    # 'tailwind',
     'theme',
     'django_browser_reload',
     "django_countries",
