@@ -23,5 +23,5 @@ def Home(request):
         'form': form,
         'message': message
     }
-    return render(request, 'base.html', context)
+    return render(request, 'home.html', context)
 

@@ -26,12 +26,11 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 # RAILWAY CONFIGURATION DEPLOY
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = [os.getenv('TRUSTED_URL')]
+ALLOWED_HOSTS = []
 
 
 
@@ -46,7 +45,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # Dependencies
+    'tailwind',
     'theme',
+    'django_browser_reload',
     "django_countries",
     'chartjs',
 
@@ -57,6 +58,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -92,9 +95,21 @@ WSGI_APPLICATION = "base.wsgi.application"
 
 
 DATABASES = {
+    # Develop configuration
+    "dev": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'crm',
+        "USER": 'postgres',
+        "PASSWORD": 'admin',
+        "HOST": '127.0.0.1',
+        "PORT": '5432',
+    },
+
     # RAILWAY CONFIGURATION DEPLOY
-    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    'production': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
+
+DATABASES['default'] = DATABASES['dev' if DEBUG else 'production']
 
 
 # Password validation
@@ -140,8 +155,14 @@ LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/crm/opportunities/kanban/"
 LOGOUT_REDIRECT_URL = "/"
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 # Register Tailwind theme
 TAILWIND_APP_NAME = 'theme'
+# This is to run in windows to install dependencies tailwind
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
