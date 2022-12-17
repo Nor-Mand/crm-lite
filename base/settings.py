@@ -26,7 +26,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # RAILWAY CONFIGURATION DEPLOY
 ALLOWED_HOSTS = ['*']
