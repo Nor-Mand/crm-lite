@@ -1,38 +1,39 @@
-<section class="text-gray-600 body-font w-full">
-    <div class="container mx-auto flex px-5 py-24 flex-col items-center lg:flex-row lg:py-0">
-        <div class="border-gray-200 w-full border-b text-center lg:w-1/2 lg:p-20 lg:border-r lg:mr-4 lg:border-b-0 lg:bg-indigo-500 lg:text-white">
-            <h1 class="title-font text-4xl m mb-4 font-medium text-gray-900 lg:text-3xl lg:text-white">CRM lite
-            </h1>
-            <p class="text-3xl mb-8 leading-relaxed lg:text-xl">Customer Relationship Management (CRM) is a strategy
-                that companies use to manage interactions with customers and potential customers. CRM helps
+<section class="text-gray-600 body-font w-full p-8">
+    <div class="container mx-auto flex px-5 py-10 flex-col items-center lg:flex-row lg:py-0" >
+        <div class="border-gray-200 w-full  text-center lg:w-1/2 mb-10">
+            <img src="/static/bg-crm.jpg" alt="background CRM" class="max-w-full h-auto">
+        </div>
+        <div class="flex flex-col bg-indigo rounded-lg  w-full lg:w-1/2 ">
+            <h1 class="text-4xl text-indigo-600 font-bold lg:text-5xl text-center lg:mb-3">CRM Lite</h1>
+{#             <h1 class="title-font text-4xl m mb-4 font-medium text-gray-900 lg:text-9xl lg:text-indigo-200 lg:font-extrabold ">CRM lite#}
+{#            </h1>#}
+            <p class="text-xl mb-8 mt-6 leading-relaxed text-center lg:text-xl">This is a project is created in Django Framework to helps
                 organisations streamline processes, build customer relationships, increase sales, improve customer
                 service, and increase profitability.
                 this project is based in the basic transaction which the salespersons needs to take control of her sales
                 and opportunities. </p>
-            <p class="text-3xl mb-8 leading-relaxed lg:text-xl">You can check and playground above this project only you
-                need to put de credentials by default</p>
-        </div>
-        <div class=" mt-10 p-20 flex flex-col bg-white rounded-lg  w-full lg:w-1/2 lg:mt-0 ">
-            <div class="shadow-md lg:p-20">
-                <h2 class="text-gray-900 mb-1 font-medium title-font text-4xl mb-10 lg:text-xl">Login Account</h2>
+            <div class="flex flex-col  items-center justify-center">
+                <div class="shadow-xl w-full p-10 lg:p-6  lg:w-1/2">
+                <h2 class="text-gray-900 mb-1 font-medium title-font text-xl mb-1 lg:text-lg">Login Account</h2>
                 <form method="post">
                     {% csrf_token %}
-                    <div class="relative mb-8">
-                        <label for="email" class="text-gray-60 text-2xl lg:text-sm">Username (admin)</label>
+                    <div class="relative mb-4">
+                        <label for="email" class="text-gray-60 text-sm lg:text-sm">Username (admin)</label>
                         {#        <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">#}
                         {{ form.username }}
                     </div>
-                    <div class="relative mb-8">
-                        <label for="email" class="leading-7 text-gray-600 text-2xl lg:text-sm">Password (admin)</label>
+                    <div class="relative mb-4">
+                        <label for="email" class="leading-7 text-gray-600 text-sm lg:text-sm">Password (admin)</label>
                         {{ form.password }}
                     </div>
                     <div class="flex">
-                        <button class="ml-auto text-white bg-indigo-500 border-0 py-4 px-6 focus:outline-none hover:bg-indigo-600 rounded text-3xl lg:text-base">
+                        <button class="ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg lg:text-base">
                             Login
                         </button>
                     </div>
                     <p class="text-2xl text-red-500 mt-3">{{ message }}</p>
                 </form>
+            </div>
             </div>
         </div>
     </div>

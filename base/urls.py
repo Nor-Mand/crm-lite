@@ -26,8 +26,9 @@ urlpatterns = [
     path('', Home),
     path('crm/', include('crm.urls', namespace='crm')),
     path('contacts/', include('contacts.urls', namespace='contacts')),
-    path('__debug__/', include(debug_toolbar.urls)),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('__debug__/', include(debug_toolbar.urls)),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
 
 if settings.DEBUG:
