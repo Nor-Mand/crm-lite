@@ -26,7 +26,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 # RAILWAY CONFIGURATION DEPLOY
@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # Dependencies
-    # 'tailwind',
+    'tailwind',
     'theme',
-    # 'django_browser_reload',
+    'django_browser_reload',
     "django_countries",
     'chartjs',
 
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     # "debug_toolbar.middleware.DebugToolbarMiddleware",
-    # "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
