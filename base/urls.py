@@ -22,7 +22,6 @@ from .views import Home
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path('', Home),
     path('crm/', include('crm.urls', namespace='crm')),
     path('contacts/', include('contacts.urls', namespace='contacts')),
@@ -34,5 +33,10 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+elif settings.DEBUG:
+    urlpatterns = [
+        path("admin/", admin.site.urls),
+        path('__debug__/', include(debug_toolbar.urls)),
+        path("__reload__/", include("django_browser_reload.urls")),
+    ]
 
