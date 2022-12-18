@@ -26,17 +26,12 @@ urlpatterns = [
     path('crm/', include('crm.urls', namespace='crm')),
     path('contacts/', include('contacts.urls', namespace='contacts')),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('__debug__/', include(debug_toolbar.urls)),
-    path("__reload__/", include("django_browser_reload.urls")),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-elif settings.DEBUG:
-    urlpatterns = [
-        path("admin/", admin.site.urls),
-        path('__debug__/', include(debug_toolbar.urls)),
-        path("__reload__/", include("django_browser_reload.urls")),
-    ]
+    urlpatterns.append(path("admin/", admin.site.urls))
+    urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))
+    urlpatterns.append(path('__reload__/', include("django_browser_reload.urls")))
 
