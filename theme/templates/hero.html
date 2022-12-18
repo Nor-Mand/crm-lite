@@ -1,7 +1,8 @@
+{% load static %}
 <section class="text-gray-600 body-font w-full p-8">
     <div class="container mx-auto flex px-5 py-10 flex-col items-center lg:flex-row lg:py-0" >
         <div class="border-gray-200 w-full  text-center lg:w-1/2 mb-10">
-            <img src="/theme/static/bg-crm.jpg" alt="background CRM" class="max-w-full h-auto">
+            <img src="{% static 'bg-crm.jpg' %}" alt="background CRM" class="max-w-full h-auto">
         </div>
         <div class="flex flex-col bg-indigo rounded-lg  w-full lg:w-1/2 ">
             <h1 class="text-4xl text-indigo-600 font-bold lg:text-5xl text-center lg:mb-3">CRM Lite</h1>

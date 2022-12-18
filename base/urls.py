@@ -29,9 +29,10 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns.append(path("admin/", admin.site.urls))
     urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))
     urlpatterns.append(path('__reload__/', include("django_browser_reload.urls")))
+else:
+    urlpatterns += static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
