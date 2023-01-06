@@ -21,8 +21,8 @@ INDUSTRY_CHOICES = [
 
 class Companies(models.Model):
     name = models.CharField("Company", max_length=255)
-    tax_id = models.CharField("Tax ID", max_length=155)
-    website = models.URLField("Website")
+    tax_id = models.CharField("Tax ID", max_length=155, blank=True)
+    website = models.URLField("Website", blank=True)
     industry_id = models.CharField(max_length=100, choices=INDUSTRY_CHOICES)
     logo_company = models.ImageField(upload_to='profile_pictures/', default='', blank=True)
 

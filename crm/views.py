@@ -1,5 +1,6 @@
 from django.db.models import Sum
 from django.db.models.functions import ExtractMonth
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Lead, Stage, Months
@@ -13,6 +14,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 @login_required
 def opportunities_kanban_list_view( request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    stage_filter = Lead.objects.filter(
+        Q(stage_id__name__icontains=q)
+    )
     total_opportunities = Lead.objects.all().aggregate(total_opportunities=Sum('expect_revenue'))['total_opportunities'] or 0
     opportunities = Lead.objects.all()
     stages = Stage.objects.all()
@@ -26,6 +31,7 @@ def opportunities_kanban_list_view( request):
     context = {
         'opportunities': opportunities,
         'stages': stages,
+        'stage_filter': stage_filter,
         'formOpportunity': formOpportunity,
         'total_opportunities': total_opportunities
     }

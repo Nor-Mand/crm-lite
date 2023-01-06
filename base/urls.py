@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import debug_toolbar
+# import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -30,7 +30,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns.append(path("admin/", admin.site.urls))
-    urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))
+    # urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))
     urlpatterns.append(path('__reload__/', include("django_browser_reload.urls")))
     urlpatterns += static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

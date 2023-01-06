@@ -8,7 +8,7 @@
 
         <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle w-full m-4 lg:my-8 lg:align-middle lg:max-w-lg lg:w-full"
              role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            <div class="bg-white px-12 py-12 ">
+            <div class="bg-white px-6 py-6 ">
                 <form class="w-full" method="POST">
                     {% csrf_token %}
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -33,8 +33,8 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap -mx-3 mb-2">
-                        <div class="w-full  px-3 mb-6 md:mb-0">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full  px-3 mb-6 ">
                             <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
                                 Company
                             </label>
@@ -48,9 +48,9 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="w-full  px-3 mb-6 md:mb-0">
+                         <div class="w-full  px-3 mb-6">
                             <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
-                                Customer
+                                Salesperson
                             </label>
                             <div class="relative">
                                 {{ formOpportunity.partner_id }}
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full px-3 mb-6 md:mb-0">
+                        <div class="w-full px-3 mb-6">
                             <label class="block capitalize tracking-wide text-gray-700 text-3xl font-bold mb-2 lg:text-sm">
                                 Stage
                             </label>
@@ -81,7 +81,7 @@
                          <button type="button" class="ml-auto py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2 text-3xl lg:text-sm"
                             onclick="opportunityModal()"><i class="fas fa-times"></i> Cancel
                     </button>
-                    <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2 text-3xl lg:text-sm"><i
+                    <button type="submit" class="py-2 px-4 bg-indigo-500 text-white rounded hover:bg-indigo-700 mr-2 text-3xl lg:text-sm"><i
                             class="fas fa-plus"></i> Create
                     </button>
                     </div>

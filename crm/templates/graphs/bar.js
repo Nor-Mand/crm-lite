@@ -1,6 +1,6 @@
 
    var ctx = document.getElementById('barChart').getContext('2d');
-var labels = [{% for stage in stages %} '{{stage.stage_id}}',{% endfor %}]
+    var labels = [{% for stage in stages %} '{{stage.stage_id}}',{% endfor %}]
    var barChart = new Chart(ctx,{
        type: 'bar',
        data: {

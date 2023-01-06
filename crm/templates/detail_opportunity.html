@@ -36,8 +36,12 @@
         </div>
       </div>
       <div class="lg:w-2/6 w-full flex justify-center" >
+          {% if leads.company_id.logo_company %}
           {% load static %}
           <img alt="Logo Company" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="{{leads.company_id.logo_company.url}}">
+          {% else %}
+          No Found Image.
+          {% endif %}
       </div>
     </div>
   </div>

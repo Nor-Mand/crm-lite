@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
-import dj_database_url
+
 import os
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +26,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 # RAILWAY CONFIGURATION DEPLOY
@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     # Dependencies
     'theme',
     "django_countries",
-    'chartjs',
+    # 'chartjs',
+    "django_browser_reload",
 
     # Custom App's
     "contacts",
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -92,8 +94,16 @@ WSGI_APPLICATION = "base.wsgi.application"
 
 
 DATABASES = {
-    # RAILWAY CONFIGURATION DEPLOY
-    'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    # Develop configuration
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'crm',
+        "USER": 'postgres',
+        "PASSWORD": 'admin',
+        "HOST": '127.0.0.1',
+        "PORT": '5432',
+    },
+
 }
 
 
@@ -126,7 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "theme/static/"
+STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
@@ -148,6 +158,3 @@ TAILWIND_APP_NAME = 'theme'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# RAILWAY CONFIGURATION DEPLOY
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

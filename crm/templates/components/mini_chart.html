@@ -1,0 +1,11 @@
+<div class="flex flex-wrap w-full border-2 border-gray-200 rounded-lg p-4 relative  bg-white">
+    <canvas id="miniChart" width="400" height="300"></canvas>
+</div>
+
+{% block scripts %}
+    <script>
+    $(document).ready(function () {
+        {% include 'graphs/mini_bar.js' %}
+    });
+    </script>
+{% endblock scripts %}
