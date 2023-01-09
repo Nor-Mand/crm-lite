@@ -87,8 +87,11 @@ def crm_reports(request):
 
 @login_required
 def opportunity_list_view(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
     total_leads = Lead.objects.all().aggregate(total_leads=Sum('expect_revenue'))['total_leads'] or 0
-    leads = Lead.objects.all()
+    leads = Lead.objects.filter(
+                        Q(name__icontains=q)
+                        )
     stages = Stage.objects.all()
     if request.method == 'POST':
         formOpportunity = OpportunityModelForm(request.POST)
