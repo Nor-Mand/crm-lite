@@ -43,7 +43,8 @@
         <tbody>
             {% for lead in leads|dictsortreversed:"create_date" %}
           <tr class="{% cycle '' 'bg-gray-100' %}">
-            <td class="px-4 py-2 text-sm text-gray-900 ">{{ lead.name }}</td>
+
+            <td class="px-4 py-2 text-sm text-gray-900 "><a href="">{{ lead.name }}</a></td>
             <td class="px-4 py-2 text-sm text-gray-900">{{ lead.company_id|default_if_none:"--"  }} </td>
             <td class="px-4 py-2 text-sm text-gray-900">{{ lead.partner_id }}</td>
             <td class="px-4 py-2 text-sm text-gray-900">{{ lead.create_date|date:"d/m/Y" }}</td>
@@ -63,6 +64,7 @@
                  {% endif %}
                  ">{{ lead.stage_id }}</span>
                 </td>
+
           </tr>
             {% endfor %}
         </tbody>

@@ -17,10 +17,10 @@
                         {% endif %}
                         ">
                             <div class="flex-grow">
-                                <h2 class="text-md text-gray-700 font-medium mb-2">{{ opportunity.name }}</h2>
-                                <h2 class="text-base text-gray-400 font-medium mb-1 ">{{ opportunity.company_id|default_if_none:"--" }}</h2>
+                                <h2 class="text-sm text-gray-700 font-medium mb-1">{{ opportunity.name|slice:":40" }}..</h2>
+                                <h2 class="text-xs text-gray-400 font-medium mb-1 ">{{ opportunity.company_id|default_if_none:"--" }}</h2>
                                 <div class="flex justify-between mb-1">
-                                    <p class="text-gray-500 text-2xl lg:text-base">{{ opportunity.expect_revenue|currency }}</p>
+                                    <p class="text-gray-500 text-xs lg:text-base">{{ opportunity.expect_revenue|currency }}</p>
                                     <div class="mr-2">
                                         {% if opportunity.stage_id.name == 'Preposition' %}
                                         <svg class="flex-shrink-0 w-5 h-5 text-amber-300 text-white"
