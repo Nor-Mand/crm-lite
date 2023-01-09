@@ -1,13 +1,12 @@
 
     var ctx = document.getElementById('polarChart').getContext('2d');
-    var labels = [{% for stage in stages %} '{{stage.stage_id}}',{% endfor %}]
+    var labels = [{% for stage in stages %} '{{stage}}',{% endfor %}]
     var polarChart = new Chart(ctx, {
         type: 'polarArea',
         data: {
               labels: labels,
               datasets: [
                 {
-                  label: 'Dataset 1',
                   data: [
                       {{ total_stage_new }},
                     {{ total_stage_qualified }},

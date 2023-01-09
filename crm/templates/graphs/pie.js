@@ -1,12 +1,11 @@
 
     var ctx1 = document.getElementById('pieChart').getContext('2d');
-    var labels = [{% for stage in stages %} '{{stage.stage_id}}',{% endfor %}]
+    var labels = [{% for stage in stages %} '{{stage}}',{% endfor %}]
     var pieChart = new Chart(ctx1, {
         type: 'doughnut',
         data: {
             labels: labels,
             datasets: [{
-                label: '# of users',
                 data: [
                     {{ total_stage_new }},
                     {{ total_stage_qualified }},

@@ -67,7 +67,8 @@ def crm_reports(request):
     total_stage_won = Lead.objects.filter(stage_id=4).aggregate(total_credit=Sum('expect_revenue'))['total_credit'] or 0
     total_stage_lost = Lead.objects.filter(stage_id=5).aggregate(total_credit=Sum('expect_revenue'))['total_credit'] or 0
     leads = Lead.objects.all()
-    stages = Lead.objects.raw('SELECT * FROM crm_lead group by stage_id_id, id ORDER BY stage_id_id ASC')
+    # stages = Lead.objects.raw('SELECT * FROM crm_lead group by stage_id_id, id ORDER BY stage_id_id ASC')
+    stages = Stage.objects.all()
     months = Months.objects.all()
     total_months = Lead.objects.annotate(month=ExtractMonth('date_deadline')).values('month').annotate(total=Sum('expect_revenue')).values('month', 'total','stage_id')
     context = {

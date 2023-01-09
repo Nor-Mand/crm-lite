@@ -1,14 +1,13 @@
 
    var ctx = document.getElementById('barChart').getContext('2d');
-    var labels = [{% for stage in stages %} '{{stage.stage_id}}',{% endfor %}]
+    var labels = [{% for stage in stages %} '{{stage}}',{% endfor %}]
    var barChart = new Chart(ctx,{
        type: 'bar',
        data: {
          labels: labels,
          datasets: [{
-           label: 'total Leads',
            data: [
-               {{ total_stage_new }},
+                    {{ total_stage_new }},
                     {{ total_stage_qualified }},
                     {{ total_stage_preposition }},
                     {{ total_stage_won }},
@@ -33,10 +32,10 @@
          }]
        },
        options: {
-         scales: {
-           y: {
-             beginAtZero: true
-           }
-         }
+        plugins: {
+            legend: {
+                display: false,
+            }
+        }
        }
    })
