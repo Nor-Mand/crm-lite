@@ -10,7 +10,7 @@ CRM lite, is a short application create with Django using Postgresql as Database
 https://youtu.be/xKxyIQfKOSc
 
 ### Home
-![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/picture_bg.png)
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/project/hero.png)
 
 ### Menu Opportunities
 #### __Kanban view
