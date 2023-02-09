@@ -46,8 +46,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # Dependencies
-    'theme',
     "django_countries",
+    "tailwind",
+    "theme",
     # 'chartjs',
     "django_browser_reload",
 
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     "crm",
     # "debug_toolbar",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -150,11 +152,17 @@ LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/crm/opportunities/kanban/"
 LOGOUT_REDIRECT_URL = "/"
 
-# Register Tailwind theme
-TAILWIND_APP_NAME = 'theme'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Tailwind configuration
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"

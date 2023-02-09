@@ -4,12 +4,12 @@
  * If you need the full config, get it from here:
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
+
 module.exports = {
     content: [
         /**
          * HTML. Paths to Django template files that will contain Tailwind CSS classes.
          */
-
 
         /*  Templates within theme app (<tailwind_app_name>/templates), e.g. base.html. */
         '../templates/**/*.html',
@@ -42,10 +42,9 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {
-            fontFamily: {
-                'sans': ['Helvetica', 'Arial', 'sans-serif'],
-            }
+        extend: {},
+        fontFamily: {
+            'quicksand': ['Quicksand', 'sans-serif'],
         },
     },
     plugins: [
