@@ -16,7 +16,7 @@ def Home(request):
             if user is not None:
                 login(request, user)
                 message = f'Hello {user.username}! You have been logged in'
-                return redirect('leads:kanban-opportunity')
+                return redirect('crm:crm-reports')
             else:
                 message = 'Username or Password Incorrect.'
     context = {

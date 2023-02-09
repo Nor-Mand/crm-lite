@@ -61,6 +61,10 @@ class OpportunitiesListView(LoginRequiredMixin, ListView):
 @login_required
 def crm_reports(request):
     new = Lead.objects.filter(stage_id=1).count()
+    qualified = Lead.objects.filter(stage_id=2).count()
+    preposition = Lead.objects.filter(stage_id=3).count()
+    won = Lead.objects.filter(stage_id=4).count()
+    lost = Lead.objects.filter(stage_id=5).count()
     total_stage_new = Lead.objects.filter(stage_id=1).aggregate(total_credit=Sum('expect_revenue'))['total_credit'] or 0
     total_stage_qualified = Lead.objects.filter(stage_id=2).aggregate(total_credit=Sum('expect_revenue'))['total_credit'] or 0
     total_stage_preposition = Lead.objects.filter(stage_id=3).aggregate(total_credit=Sum('expect_revenue'))['total_credit'] or 0
@@ -76,6 +80,10 @@ def crm_reports(request):
         'stages': stages,
         'leads': leads,
         'new': new,
+        'qualified': qualified,
+        'preposition': preposition,
+        'won': won,
+        'lost': lost,
         'total_stage_new': total_stage_new,
         'total_stage_qualified': total_stage_qualified,
         'total_stage_preposition': total_stage_preposition,

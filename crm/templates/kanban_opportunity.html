@@ -11,7 +11,7 @@
                 <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_opportunities|currency }}
                     - {{ opportunities|length }} Leads</p>
             </div>
-            <a href="{% url 'leads:kanban-opportunity' %}"
+            <a href="{% url 'crm:kanban-opportunity' %}"
                class="{% if "/crm/opportunities/kanban/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
@@ -19,7 +19,7 @@
                           d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"/>
                 </svg>
             </a>
-            <a href="{% url 'leads:list-opportunity' %}"
+            <a href="{% url 'crm:list-opportunity' %}"
                class="{% if "/crm/opportunities/list/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
@@ -40,11 +40,11 @@
                     <h1 class="text-xl mb-2 text-gray-500 text-left">STAGES</h1>
                 <ul class="ml-6">
                     <li>
-                        <a href="{% url 'leads:kanban-opportunity' %}" class="flex justify-between pb-3">All <span class="bg-indigo-400 text-white text-xs font-medium  px-2 py-0.5 rounded ">{{ opportunities.count }}</span></a>
+                        <a href="{% url 'crm:kanban-opportunity' %}" class="flex justify-between pb-3">All <span class="bg-indigo-400 text-white text-xs font-medium  px-2 py-0.5 rounded ">{{ opportunities.count }}</span></a>
                     </li>
                     {% for stage in stages %}
                         <li>
-                            <a href="{% url 'leads:kanban-opportunity' %}?q={{ stage.name }}" class="flex justify-between pb-3">{{ stage.name }}
+                            <a href="{% url 'crm:kanban-opportunity' %}?q={{ stage.name }}" class="flex justify-between pb-3">{{ stage.name }}
                             <span class="bg-indigo-400 text-white text-xs font-medium  px-2 py-0.5 rounded">{{ stage.lead_set.all.count }}</span>
                             </a>
                         </li>
