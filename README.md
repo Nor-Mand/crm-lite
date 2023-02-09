@@ -13,11 +13,13 @@ https://youtu.be/xKxyIQfKOSc
 ### Home
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/project/hero.png)
 
+### Reports
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/project/reports.png)
+
 ### Menu Opportunities
 #### __Kanban view
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/picture_5.png)
 #### __List view
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/picture_6.png)
-### Menu Reports
-![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/picture_7.png)
+
 
