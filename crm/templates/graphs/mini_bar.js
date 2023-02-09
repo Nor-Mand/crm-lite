@@ -31,7 +31,6 @@ var miniChart = new Chart(ctx,{
        plugins: {
           legend: {
               display: false,
-
           },
           tooltip: {
             callbacks: {
@@ -42,7 +41,18 @@ var miniChart = new Chart(ctx,{
        scales: {
           y: {
             display: false
+        },
+           x: {  // not 'xAxes: [{' anymore (not an array anymore)
+        ticks: {
+          color: "white",  // not 'fontColor:' anymore
+          //fontSize: 14,
+          font: {
+            size: 12 // 'size' now within object 'font {}'
+          },
+          stepSize: 1,
+          beginAtZero: true
         }
+      }
     },
    }
 })

@@ -16,7 +16,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def opportunities_kanban_list_view( request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     stage_filter = Lead.objects.filter(
-        Q(stage_id__name__icontains=q)
+        Q(name__icontains=q) |
+        Q(company_id__name__icontains=q)
     )
     total_opportunities = Lead.objects.all().aggregate(total_opportunities=Sum('expect_revenue'))['total_opportunities'] or 0
     opportunities = Lead.objects.all()
@@ -33,7 +34,8 @@ def opportunities_kanban_list_view( request):
         'stages': stages,
         'stage_filter': stage_filter,
         'formOpportunity': formOpportunity,
-        'total_opportunities': total_opportunities
+        'total_opportunities': total_opportunities,
+        'q': q
     }
     return render(request, 'kanban_opportunity.html', context=context)
 

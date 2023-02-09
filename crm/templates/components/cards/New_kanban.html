@@ -1,0 +1,63 @@
+{% load crm_currency %}
+<div class="">
+    {% for opportunity in stage_filter %}
+        {% if opportunity.stage_id.name == 'New' %}
+            <a href="{% url 'crm:lead-detail' opportunity.pk %}" class="lg:w-full ">
+                <div class="w-full bg-white shadow-none rounded-sm mb-2">
+                    <div class="h-full flex items-center p-4">
+                        <div class="flex-grow">
+                            <h2 class="text-sm text-gray-700 font-medium mb-1">{{ opportunity.name|slice:":40" }}..</h2>
+                            <h2 class="text-xs text-gray-400 font-medium mb-1 ">{{ opportunity.company_id|default_if_none:"--" }}
+                                | {{ opportunity.expect_revenue|currency }}</h2>
+                            <div class="flex justify-between mb-1">
+                                <p class="text-gray-500 text-xs lg:text-base"></p>
+                                <div class="mr-2">
+                                    {% if opportunity.stage_id.name == 'Preposition' %}
+                                        <svg class="flex-shrink-0 w-4 h-4 text-amber-300 text-white"
+                                             fill="currentColor"
+                                             viewBox="0 0 20 20"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                  clip-rule="evenodd"></path>
+                                        </svg>
+                                    {% elif opportunity.stage_id.name == 'Lost' %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor"
+                                             class="w-10 h-10 lg:w-4 lg:h-4 text-red-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/>
+                                        </svg>
+                                    {% elif opportunity.stage_id.name == 'Won' %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke-width="1.5" stroke="currentColor"
+                                             class="w-10 h-10 lg:w-4 lg:h-4 text-indigo-500">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/>
+                                        </svg>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="text-xl text-gray-500 lg:text-xs">
+                                    date: {{ opportunity.date_deadline|date:"d-m-Y" }}</p>
+                                {% now "d-m-Y" as todays_date %}
+                                {% if opportunity.stage_id.name == 'Won' %}
+                                    <span class="bg-green-100 text-green-800 text-xl lg:text-xs font-semibold px-2 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-900">Won</span>
+                                {% elif opportunity.stage_id.name == 'Lost' %}
+                                    <span class="bg-green-100 text-green-800 text-xl lg:text-xs font-semibold px-2 py-0.5 rounded dark:bg-red-400 dark:text-white">Lost</span>
+                                {% elif opportunity.date_deadline|date:"d-m-Y" < todays_date %}
+                                    <span class="bg-red-100 text-red-800 text-xl lg:text-xs font-semibold  px-2 py-0.5 rounded dark:bg-red-200 dark:text-red-900">overdue</span>
+                                {% elif opportunity.date_deadline|date:"d-m-Y" == todays_date %}
+                                    <span class="bg-yellow-100 text-yellow-800 text-xl lg:text-sxsfont-semibold px-2 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">today</span>
+                                {% elif opportunity.date_deadline|date:"d-m-Y" > todays_date %}
+                                    <span class="bg-green-100 text-green-800 text-xl lg:text-xs font-semibold px-2 py-0.5 rounded dark:bg-green-200 dark:text-green-900">planned</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>
