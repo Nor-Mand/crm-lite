@@ -1,10 +1,11 @@
-# crm-lite
+# CRM Lite
 CRM lite, is a short application create with Django using Postgresql as Database, for the fronted has Tailwind CSS
 
 
-## DJANGO - POSTGRESQL
+## DJANGO - POSTGRESQL - TAILWIND
 ### Pre-Requisites
-`apply the file requirement.txt in you project`
+`django 4.1.3`
+`django-tailwind 3.4.0`
 
 ## See the video
 https://youtu.be/xKxyIQfKOSc
