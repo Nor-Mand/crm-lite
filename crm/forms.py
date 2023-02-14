@@ -1,7 +1,7 @@
 from django.forms import ModelForm, TextInput, NumberInput, Select, Textarea
 from .models import Lead
 
-custom_field = "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mt-10 lg:mt-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+custom_field = "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mt-2 lg:mt-0 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 
 
 class OpportunityModelForm(ModelForm):

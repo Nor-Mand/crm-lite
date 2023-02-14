@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
 @login_required
 def kanban( request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -27,7 +26,7 @@ def kanban( request):
         formLead = OpportunityModelForm(request.POST)
         if formLead.is_valid():
             formLead.save()
-            return redirect('crm:kanban')
+            return redirect('crm:kanban-view')
     else:
         formOpportunity = OpportunityModelForm()
     menus = Menus.objects.all().order_by('position')
@@ -37,7 +36,7 @@ def kanban( request):
         'stage_filter': stage_filter,
         'formOpportunity': formOpportunity,
         'total_opportunities': total_opportunities,
-        'menus' : menus
+        'menus': menus
     }
     return render(request, 'views/kanban_views.html', context=context)
 
@@ -56,12 +55,6 @@ def form_valid(sender, instance, **kwargs):
     return form_valid
 
 
-# class ListView(LoginRequiredMixin, ListView):
-#     template_name = 'views/list_views.html'
-#     queryset = Lead.objects.all()
-#     context_object_name = 'opportunities'
-#
-
 @login_required
 def list_view(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -74,7 +67,7 @@ def list_view(request):
         formOpportunity = OpportunityModelForm(request.POST)
         if formOpportunity.is_valid():
             formOpportunity.save()
-            return redirect('crm:list-opportunity')
+            return redirect('crm:list-view')
     else:
         formOpportunity = OpportunityModelForm()
     menus = Menus.objects.all().order_by('position')
@@ -87,6 +80,7 @@ def list_view(request):
     }
     return render(request, 'views/list_views.html', context=context)
 
+
 class LeadDetailView(LoginRequiredMixin, DetailView):
     template_name = 'views/detail_views.html'
     queryset = Lead.objects.all()
@@ -94,14 +88,13 @@ class LeadDetailView(LoginRequiredMixin, DetailView):
 
 
 @login_required
-def update_view(request,pk):
-    # return HttpResponse('ok')
+def update_view(request, pk):
     leads = Lead.objects.get(id=pk)
     if request.method == 'POST':
         formOpportunity = OpportunityModelForm(request.POST, instance=leads)
         if formOpportunity.is_valid():
             formOpportunity.save()
-            return redirect('leads:kanban-opportunity')
+            return redirect('leads:kanban-view')
     else:
         formOpportunity = OpportunityModelForm(instance=leads)
     context = {
@@ -115,7 +108,7 @@ def update_view(request,pk):
 def delete_view(request, pk):
     lead = Lead.objects.get(id=pk)
     lead.delete()
-    return redirect("leads:kanban-opportunity")
+    return redirect("crm:kanban-view")
 
 
 @login_required

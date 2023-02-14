@@ -28,7 +28,7 @@
             <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_opportunities|currency }}
                 - {{ opportunities|length }} Leads</p>
         {% elif "/crm/list/" in request.path %}
-            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }}#}
+            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }}
                 - {{ leads|length }} Leads</p>
         {% endif %}
     </div>
