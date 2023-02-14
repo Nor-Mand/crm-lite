@@ -1,13 +1,13 @@
 from django.urls import path
-from .views import opportunities_kanban_list_view, opportunity_list_view, crm_reports, LeadDetailView, opportunity_edit_view, opportunity_delete_view
+from .views import kanban, list_view, reports, update_view, delete_view, LeadDetailView
 
 app_name = 'crm'
 
 urlpatterns = [
-    path('kanban/', opportunities_kanban_list_view, name='kanban-opportunity'),
-    path('list/', opportunity_list_view, name='list-opportunity'),
-    path('reports/', crm_reports, name='crm-reports'),
+    path('kanban/', kanban, name='kanban-view'),
+    path('list/', list_view, name='list-view'),
+    path('reports/', reports, name='reports-view'),
     path('detail/<int:pk>/', LeadDetailView.as_view(), name='lead-detail'),
-    path('update/<int:pk>/', opportunity_edit_view, name='lead-update'),
-    path('delete/<int:pk>/', opportunity_delete_view, name='lead-delete'),
+    path('update/<int:pk>/', update_view, name='lead-update'),
+    path('delete/<int:pk>/', delete_view, name='lead-delete'),
 ]

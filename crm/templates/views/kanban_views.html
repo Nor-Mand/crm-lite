@@ -1,0 +1,12 @@
+{% include 'base.html' %}
+{% load crm_currency %}
+
+{% block content %}
+    <section class="text-gray-600 body-font shadow-inner">
+        {% include 'components/navBar.html' %}
+        <div class="flex bg-gray-100 ">
+            {% include 'components/sideBar.html' %}
+            {% include 'components/stages.html' %}
+        </div>
+    </section>
+{% endblock content %}

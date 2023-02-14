@@ -38,3 +38,13 @@ class Lead(models.Model):
         constraints = [
             models.CheckConstraint(check=models.Q(expect_revenue__gte='0'), name='lead_expect_non_negative'),
         ]
+
+
+class Menus(models.Model):
+    name = models.CharField(max_length=255)
+    icon = models.CharField(max_length=600)
+    url = models.CharField(max_length=255)
+    position = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name

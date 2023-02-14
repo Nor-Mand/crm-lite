@@ -1,31 +1,42 @@
-{% include 'crm-base.html' %}
+{% include 'base.html' %}
 {% load crm_currency %}
 
 {% block content %}
-<section class="text-gray-600 body-font">
-  <div class="w-full px-8 flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300">
-        <form method="GET" action="{% url 'leads:list-opportunity' %}">
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+<section class="text-gray-600 body-font shadow-inner">
+  <div class="w-full  grid grid-cols-3 gap-4 px-4 py-2">
+        <form method="GET" action="{% url 'crm:list-view' %}">
+                <div class="relative p-2">
+                    <div class="absolute inset-y-0 left-2 flex items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="none"
+                                 stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
                     </div>
-                    <input type="text" value="{{ request.GET.q }}" name="q" class="block w-full p-1 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-indigo-500 focus:ring-indigo-500" placeholder="Search leads...">
+                    <input
+                            type="text"
+                            value="{{ request.GET.q }}"
+                            name="q"
+                            class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-indigo-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+                            placeholder="Search leads...">
                 </div>
             </form>
-        <div class="md:ml-auto md:mr-auto flex flex-col items-center text-xl justify-center">
-            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm pb-3">{{ total_leads|currency }} - {{ leads|length }} Leads</p>
+        <div class="ml-auto mr-auto flex flex-wrap items-center text-xl justify-center">
+            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }} - {{ leads|length }} Leads</p>
         </div>
-         <a href="{% url 'leads:kanban-opportunity' %}" class="{% if "/crm/opportunities/kanban/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
+        <div class="flex flex-row justify-end items-center">
+             <a href="{% url 'crm:kanban-view' %}" class="{% if "/crm/opportunities/kanban/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
             </svg>
         </a>
-        <a href="{% url 'leads:list-opportunity'%}" class="{% if "/crm/opportunities/list/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
+        <a href="{% url 'crm:list-view'%}" class="{% if "/crm/opportunities/list/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
         </a>
         <button class="flex text-white text-xl bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded lg:text-sm" onclick="opportunityModal()">New</button>
+        </div>
     </div>
 <div class="w-full mx-auto overflow-auto">
       <table class="table-auto w-full text-left whitespace-no-wrap">

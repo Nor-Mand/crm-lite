@@ -1,10 +1,10 @@
-{% include 'crm-base.html' %}
+{% include 'base.html' %}
 {% load crm_currency %}
 
 {% block content %}
 <section class="text-gray-600 body-font">
     <div class="w-full px-8 flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
-        <a href="{% url 'crm:kanban-opportunity' %}" class="text-sm mb-2 text-gray-500 hover:text-indigo-500">Pipeline detail /<span class="text-gray-500 ml-2"> {{ leads.name }}</span>
+        <a href="{% url 'crm:kanban-view' %}" class="text-sm mb-2 text-gray-500 hover:text-indigo-500">Pipeline detail /<span class="text-gray-500 ml-2"> {{ leads.name }}</span>
         </a>
         <a href="{% url 'crm:lead-update' leads.pk %}" class="flex ml-auto mr-4 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Edit</a>
         <button onclick="deleteModal()" class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Delete</button>

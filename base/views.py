@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from . import forms
 
 
-def Home(request):
+def home(request):
     form = forms.LoginForm()
     message = ''
     if request.method == 'POST':
@@ -16,7 +16,7 @@ def Home(request):
             if user is not None:
                 login(request, user)
                 message = f'Hello {user.username}! You have been logged in'
-                return redirect('crm:crm-reports')
+                return redirect('crm:reports-view')
             else:
                 message = 'Username or Password Incorrect.'
     context = {

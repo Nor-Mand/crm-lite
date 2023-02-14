@@ -3,7 +3,7 @@
     {% for opportunity in stage_filter %}
         {% if opportunity.stage_id.name == 'Preposition' %}
             <a href="{% url 'crm:lead-detail' opportunity.pk %}" class="lg:w-full">
-                <div class="w-full bg-white shadow-none rounded-sm mb-2">
+                <div class="w-full bg-white shadow-none rounded-sm mb-2 hover:bg-indigo-100">
                     <div class="h-full flex items-center p-4">
                         <div class="flex-grow">
                             <h2 class="text-sm text-gray-700 font-medium mb-1">{{ opportunity.name|slice:":40" }}..</h2>
