@@ -1,13 +1,15 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 {% load crm_currency %}
 
 {% block content %}
-    <section class="text-gray-600 body-font shadow-inner">
+    <section class="m-0 box-border h-screen w-screen bg-gray-200 p-0 overflow-hidden">
         {% include 'components/navBar.html' %}
-        <div class="flex bg-gray-100 ">
+        <div class="sticky flex  h-full">
             {% include 'components/sideBar.html' %}
-            {% include 'components/stages.html' %}
+            <div class="overflow-y-scroll w-full">
+                {% include 'components/stages.html' %}
+                {% include 'components/modals/create_modal.html' %}
+            </div>
         </div>
     </section>
-    {% include 'components/modals/create_modal.html' %}
 {% endblock content %}

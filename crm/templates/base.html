@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CRM | Leads</title>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <!-- jQuery -->
     <script src="{% static '/js/jquery.js' %}"></script>
     <!-- plugins -->
@@ -12,37 +13,42 @@
     <script src="{% static '/js/datalabels.js' %}"></script>
     {% tailwind_css %}
 </head>
-<body>
-    {% include 'components/header.html' %}
+<body class="bg-gray-200 h-screen flex flex-col">
+{% include 'components/header.html' %}
+{% block content %}{% endblock %}
 
-    {% block content %}
-    {% endblock content%}
+{% include 'footer.html' %}
+{% block scripts %} {% endblock%}
 
-    {% block scripts %}
-    {% endblock scripts %}
-    <script>
+<script type="text/javascript">
 
-        function opportunityModal() {
-            document.getElementById('create-modal').classList.toggle('hidden')
-        }
-        function deleteModal() {
-          document.getElementById('delete-modal').classList.toggle('hidden')
-        }
-        function companyModal() {
-          document.getElementById('company-modal').classList.toggle('hidden')
-        }
-        function companyModalDelete() {
-          document.getElementById('company-modal-delete').classList.toggle('hidden')
-        }
-        function CompanyDeleteModal() {
-          document.getElementById('company-delete-modal').classList.toggle('hidden')
-        }
-        function contactModal() {
-          document.getElementById('contact-modal').classList.toggle('hidden')
-        }
-        function contactModalDelete() {
-          document.getElementById('contact-modal-delete').classList.toggle('hidden')
-        }
-    </script>
+    function opportunityModal() {
+        document.getElementById('create-modal').classList.toggle('hidden')
+    }
+
+    function deleteModal() {
+        document.getElementById('delete-modal').classList.toggle('hidden')
+    }
+
+    function companyModal() {
+        document.getElementById('company-modal').classList.toggle('hidden')
+    }
+
+    function companyModalDelete() {
+        document.getElementById('company-modal-delete').classList.toggle('hidden')
+    }
+
+    function CompanyDeleteModal() {
+        document.getElementById('company-delete-modal').classList.toggle('hidden')
+    }
+
+    function contactModal() {
+        document.getElementById('contact-modal').classList.toggle('hidden')
+    }
+
+    function contactModalDelete() {
+        document.getElementById('contact-modal-delete').classList.toggle('hidden')
+    }
+</script>
 </body>
 </html>

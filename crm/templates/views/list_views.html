@@ -1,39 +1,46 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 {% load crm_currency %}
 
 {% block content %}
-    <section class="text-gray-600 body-font shadow-inner">
-        {% include 'components/navBar.html' %}
-        <div class="w-full mx-auto overflow-auto">
-            <table class="table-auto w-full text-left whitespace-no-wrap">
-                <thead class="bg-gray-200">
-                <tr>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm rounded-tl rounded-bl">
-                        Opportunity
-                    </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Company</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Contact Name</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Created on</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Expected Revenue
-                    </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Expected Closing
-                    </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Stage</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for lead in leads|dictsortreversed:"create_date" %}
-                    <tr class="{% cycle '' 'bg-gray-100' %}">
+    <section class="text-gray-600 body-font shadow-inner px-10 pt-4 ">
+        <div class="bg-white shadow-lg pb-4">
+            {% include 'components/navBar.html' %}
+            <div class="w-full mx-auto ">
+                <table class="table-auto w-full text-lef">
+                    <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm ">
+                            Opportunity
+                        </th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Company</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Contact Name
+                        </th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Created on
+                        </th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Expected
+                            Revenue
+                        </th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Expected
+                            Closing
+                        </th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Stage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for lead in leads|dictsortreversed:"create_date" %}
+                        <tr class="{% cycle '' 'bg-gray-100' %}">
 
-                        <td class="px-4 py-2 text-sm text-gray-900 "><a
-                                href="{% url 'crm:lead-detail' lead.pk %}">{{ lead.name }}</a></td>
-                        <td class="px-4 py-2 text-sm text-gray-900">{{ lead.company_id|default_if_none:"--" }} </td>
-                        <td class="px-4 py-2 text-sm text-gray-900">{{ lead.partner_id }}</td>
-                        <td class="px-4 py-2 text-sm text-gray-900">{{ lead.create_date|date:"d/m/Y" }}</td>
-                        <td class="px-4 py-2 text-sm text-gray-900">{{ lead.expect_revenue|currency }}</td>
-                        <td class="px-4 py-2 text-sm
-                                {% now "d-m-Y" as todays_date %}{% if lead.date_deadline|date:"d/m/Y" < todays_date %} text-red-500 {% else %} text-gray-900 {% endif %}">{{ lead.date_deadline|date:"d/m/Y" }}</td>
-                        <td class="px-4 py-2 text-sm text-gray-900 ">
+                            <td class="px-4 py-2 text-sm text-gray-900 "><a
+                                    href="{% url 'crm:lead-detail' lead.pk %}">{{ lead.name }}</a></td>
+                            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.company_id|default_if_none:"--" }} </td>
+                            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.partner_id }}</td>
+                            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.create_date|date:"d/m/Y" }}</td>
+                            <td class="px-4 py-2 text-sm text-gray-900">{{ lead.expect_revenue|currency }}</td>
+                            <td class="px-4 py-2 text-sm
+
+
+                                    {% now "d-m-Y" as todays_date %}{% if lead.date_deadline|date:"d/m/Y" < todays_date %} text-red-500 {% else %} text-gray-900 {% endif %}">{{ lead.date_deadline|date:"d/m/Y" }}</td>
+                            <td class="px-4 py-2 text-sm text-gray-900 ">
 
                 <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded
                  {% if lead.stage_id.name == 'Won' %}
@@ -46,13 +53,14 @@
                  dark:bg-gray-200 dark:text-gray-900
                  {% endif %}
                  ">{{ lead.stage_id }}</span>
-                        </td>
+                            </td>
 
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
+        {% include 'components/modals/create_modal.html' %}
     </section>
-    {% include 'components/modals/create_modal.html' %}
 {% endblock content %}
