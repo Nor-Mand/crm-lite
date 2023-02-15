@@ -94,14 +94,16 @@ def update_view(request, pk):
         formOpportunity = OpportunityModelForm(request.POST, instance=leads)
         if formOpportunity.is_valid():
             formOpportunity.save()
-            return redirect('leads:kanban-view')
+            return redirect('crm:kanban-view')
     else:
         formOpportunity = OpportunityModelForm(instance=leads)
+    menus = Menus.objects.all().order_by('position')
     context = {
         'formOpportunity': formOpportunity,
-        'leads': leads
+        'leads': leads,
+        'menus': menus
     }
-    return render(request,'update_opportunity.html', context)
+    return render(request,'views/update_views.html', context)
 
 
 @login_required
