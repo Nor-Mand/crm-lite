@@ -28,13 +28,13 @@
             <p class="text-gray-300 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_opportunities|currency }}
                 - {{ opportunities|length }} Leads</p>
         {% elif "/crm/list/" in request.path %}
-            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }}
+            <p class="text-gray-300 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }}
                 - {{ leads|length }} Leads</p>
         {% endif %}
     </div>
     <div class="flex flex-row justify-end items-center">
         <a href="{% url 'crm:kanban-view' %}"
-           class="{% if "/crm/kanban/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
+           class="{% if "/crm/kanban/" in request.path %}bg-gray-200 rounded{% else %}text-white{% endif %} p-2 mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -42,7 +42,7 @@
             </svg>
         </a>
         <a href="{% url 'crm:list-view' %}"
-           class="{% if "/crm/list/" in request.path %}bg-gray-200 rounded{% endif %} p-2 mr-4">
+           class="{% if "/crm/list/" in request.path %}bg-gray-200 rounded{% else %} text-white {% endif %} p-2 mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-10 h-10 lg:w-6 lg:h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
