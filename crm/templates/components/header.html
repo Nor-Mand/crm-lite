@@ -1,15 +1,15 @@
-<header class="text-gray-600 body-font border-b border-gray-200 bg-white block">
+<header class="text-gray-600 body-font  bg-slate-800 block shadow-md">
     <div class="px-10 flex flex-wrap pt-3 pb-3 flex-row items-center">
         <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             {% load static %}
             <img alt="Logo Company" class="w-20 h-20 lg:w-10  lg:h-10 object-contain object-center  inline-block "
                  src="{% static 'isotipo.png' %}">
-            <span class="ml-3 text-4xl lg:text-xl">CRM</span>
+            <span class="ml-3 text-4xl lg:text-xl font-bold text-gray-100">CRM</span>
         </a>
         <nav class="mr-auto ml-4 py-1 pl-4 border-l border-gray-400 flex flex-wrap items-center text-base justify-center">
             {% for menu in menus %}
              <a href="{{ menu.url}}"
-               class="mr-5 text-gray-400 hover:text-indigo-600 cursor-pointer text-xl sm:text-base sm:flex space-x-1 mr-5">
+               class="mr-5 text-gray-300 hover:text-gray-100 cursor-pointer text-xl sm:text-base sm:flex space-x-1 mr-5">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -20,7 +20,7 @@
             {% endfor %}
         </nav>
         {% if request.user.is_authenticated %}
-            Hello, {{ request.user.username }}
+            <p class="text-gray-300">Hello, {{ request.user.username }}</p>
             <a href="{% url 'logout' %}"
                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-0 ml-4 text-xl lg:text-sm">Log
                 out
