@@ -14,7 +14,7 @@ https://youtu.be/xKxyIQfKOSc
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/project/hero.png)
 
 ### Reports
-![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/project/reports.png)
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/dashboard-dark.png)
 
 ### Menu Opportunities
 #### __Kanban view
