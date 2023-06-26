@@ -18,7 +18,7 @@ https://youtu.be/xKxyIQfKOSc
 
 ### Menu Opportunities
 #### __Kanban view
-![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/project/kanban.png)
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/kanban-dark.png)
 #### __List view
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/picture_6.png)
 
