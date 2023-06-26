@@ -1,5 +1,5 @@
 {% load crm_currency %}
-<div class="w-full  grid grid-cols-3 gap-4 px-4 py-2 bg-gray-100">
+<div class="w-full  grid grid-cols-3 gap-4 px-4 py-2 bg-slate-700">
     <div>
         {% if "/crm/kanban/" in request.path %}
             <form action="{% url 'crm:kanban-view' %}" method="GET">
@@ -25,7 +25,7 @@
     </div>
     <div class="ml-auto mr-auto flex flex-wrap items-center text-xl justify-center">
         {% if "/crm/kanban/" in request.path %}
-            <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_opportunities|currency }}
+            <p class="text-gray-300 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_opportunities|currency }}
                 - {{ opportunities|length }} Leads</p>
         {% elif "/crm/list/" in request.path %}
             <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ total_leads|currency }}
@@ -49,7 +49,7 @@
                       d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
             </svg>
         </a>
-        <button class="flex text-white text-xl bg-indigo-500 border-0 py-2 px-10 focus:outline-none hover:bg-indigo-600 rounded lg:text-sm"
+        <button class="flex text-black font-bold text-xl bg-teal-400 border-0 py-2 px-10 focus:outline-none hover:bg-teal-600 hover:text-white rounded lg:text-sm"
                 onclick="opportunityModal()">New
         </button>
     </div>

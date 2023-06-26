@@ -3,11 +3,11 @@
     {% for opportunity in stage_filter %}
         {% if opportunity.stage_id.name == 'Qualified' %}
             <a href="{% url 'crm:lead-detail' opportunity.pk %}" class="lg:w-full">
-                <div class="w-full bg-white shadow-none rounded-sm mb-2 hover:bg-indigo-100">
+                <div class="w-full bg-slate-700 shadow-none rounded-md mb-2 hover:bg-slate-800">
                     <div class="h-full flex items-center p-4">
                         <div class="flex-grow">
-                            <h2 class="text-sm text-gray-700 font-medium mb-1">{{ opportunity.name|slice:":40" }}..</h2>
-                            <h2 class="text-xs text-gray-400 font-medium mb-1 ">{{ opportunity.company_id|default_if_none:"--" }}
+                            <h2 class="text-sm text-gray-200 font-medium mb-1">{{ opportunity.name|slice:":40" }}..</h2>
+                            <h2 class="text-xs text-gray-300 font-medium mb-1 ">{{ opportunity.company_id|default_if_none:"--" }}
                                 | {{ opportunity.expect_revenue|currency }}</h2>
                             <div class="flex justify-between mb-1">
                                 <p class="text-gray-500 text-xs lg:text-base"></p>
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="flex justify-between">
-                                <p class="text-xl text-gray-500 lg:text-xs">
+                                <p class="text-xl text-gray-400 lg:text-xs">
                                     date: {{ opportunity.date_deadline|date:"d-m-Y" }}</p>
                                 {% now "d-m-Y" as todays_date %}
                                 {% if opportunity.stage_id.name == 'Won' %}

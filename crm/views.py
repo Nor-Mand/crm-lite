@@ -17,7 +17,8 @@ def kanban( request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     stage_filter = Lead.objects.filter(
         Q(name__icontains=q) |
-        Q(company_id__name__icontains=q)
+        Q(company_id__name__icontains=q) |
+        Q(stage_id__name__icontains=q) 
     )
     total_opportunities = Lead.objects.all().aggregate(total_opportunities=Sum('expect_revenue'))['total_opportunities'] or 0
     opportunities = Lead.objects.all()

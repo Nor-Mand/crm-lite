@@ -1,20 +1,20 @@
-<div class="w-1/6 px-6 border-r-2 pt-5 bg-indigo-900 flex flex-col">
-                <div class="mb-10 shadow-xl ">
+<div class="w-1/6 px-6  pt-5 bg-slate-700 flex flex-col">
+                <div class="mb-10 shadow-xl bg-slate-800 rounded-md">
                     {% include 'components/mini_chart.html' %}
                 </div>
-                <div class="border border-0 border-indigo-400 rounded-md p-5 bg-indigo-800 shadow-xl">
+                <div class="border border-0 border-indigo-400 rounded-md p-5 bg-slate-800 shadow-xl">
                     <h1 class="text-xl mb-2 text-gray-100 text-left">STAGES</h1>
                     <ul class="ml-6">
                         <li>
                             <a href="{% url 'crm:kanban-view' %}"
                                class="flex justify-between pb-3 text-gray-100">All <span
-                                    class="bg-indigo-500 text-white text-xs font-medium  px-2 py-0.5 rounded ">{{ opportunities.count }}</span></a>
+                                    class="bg-slate-700 text-white text-xs font-medium  px-2 py-0.5 rounded ">{{ opportunities.count }}</span></a>
                         </li>
                         {% for stage in stages %}
                             <li>
                                 <a href="{% url 'crm:kanban-view' %}?q={{ stage.name }}"
                                    class="flex justify-between pb-3 text-gray-100">{{ stage.name }}
-                                    <span class="bg-indigo-500 text-white text-xs font-medium  px-2 py-0.5 rounded">{{ stage.lead_set.all.count }}</span>
+                                    <span class="bg-slate-500 text-white text-xs font-medium  px-2 py-0.5 rounded">{{ stage.lead_set.all.count }}</span>
                                 </a>
                             </li>
                         {% endfor %}
