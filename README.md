@@ -20,6 +20,6 @@ https://youtu.be/xKxyIQfKOSc
 #### __Kanban view
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/kanban-dark.png)
 #### __List view
-![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/picture_6.png)
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/list-dark.png)
 
 
