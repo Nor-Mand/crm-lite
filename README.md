@@ -38,7 +38,7 @@ https://youtu.be/xKxyIQfKOSc
 #### __List view
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/list-dark.png)
 #### __Contact List view
-![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/contact-dark.png)
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/contacts-dark.png)
 
 
 
