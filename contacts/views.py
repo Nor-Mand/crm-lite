@@ -26,10 +26,20 @@ def contact_list_view(request):
     return render(request, 'contact-list.html', context=context)
 
 
-class ContactDetailView(LoginRequiredMixin, DetailView):
-    template_name = 'contact-detail.html'
-    queryset = Partner.objects.all()
-    context_object_name = 'partners'
+# class ContactDetailView(LoginRequiredMixin, DetailView):
+#     template_name = 'contact-detail.html'
+#     queryset = Partner.objects.all()
+#     context_object_name = 'partners'
+
+@login_required
+def contact_detail_view(request, pk):
+    partners = Partner.objects.get(id=pk)
+    menus = Menus.objects.all().order_by('position')
+    context = {
+        'partners': partners,
+        'menus': menus
+    }
+    return render(request,'contact-detail.html',context)
 
 
 @login_required
@@ -82,6 +92,15 @@ def company_list_view(request):
 #     context_object_name = 'companies'
 #     print("################")
 
+@login_required
+def company_detail_view(request, pk):
+    companies = Companies.objects.get(id=pk)
+    menus = Menus.objects.all().order_by('position')
+    context={
+        'companies': companies,
+        'menus':menus
+    }
+    return render(request, 'company_detail.html', context)
 
 @login_required
 def company_updated_view(request, pk):
