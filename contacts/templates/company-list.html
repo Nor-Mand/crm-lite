@@ -1,26 +1,26 @@
-{% include 'crm-base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-<section class="text-gray-600 body-font ">
-    <div class="w-full px-8 flex flex-wrap p-5 flex-col md:flex-row items-center border-b border-gray-300 mb-4">
+<section class="body-font">
+    <div class="w-full px-8 flex flex-wrap p-5 flex-col md:flex-row items-center   bg-slate-700">
         <a class="flex title-font font-medium items-center text-gray-900 md:mb-0">
-            <h1 class="text-xl mb-2 text-gray-500 lg:text-sm">List of companies</h1>
+            <h1 class="text-xl mb-2 text-gray-300 lg:text-md">List of companies</h1>
         </a>
         <div class="md:ml-auto md:mr-auto flex flex-wrap items-center text-xl justify-center">
-        <p class="text-gray-500 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ company|length }} Companies</p>
+        <p class="text-gray-300 inline-flex items-center md:mb-2 lg:mb-0 lg:text-sm">{{ company|length }} Companies</p>
         </div>
-        <button onclick="companyModal()" class="flex text-white text-xl bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded lg:text-sm">New</button>
+        <button onclick="companyModal()" class="flex text-black font-bold text-xl bg-teal-400 border-0 py-2 px-6 focus:outline-none hover:bg-teal-500 rounded lg:text-sm">New</button>
     </div>
     <div class="w-full mx-auto overflow-auto">
         <table class="table-auto w-full text-left whitespace-no-wrap">
-            <thead class="bg-gray-200">
+            <thead class="bg-slate-800">
                 <tr>
                     <th></th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm rounded-tl rounded-bl">Company Name</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Tax Id</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Website</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Industry</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Actions</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-300 text-sm">Company Name</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-300 text-sm">Tax Id</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-300 text-sm">Website</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-300 text-sm">Industry</th>
+                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-300 text-sm">Actions</th>
                 </tr>
             </thead>
         <tbody>
@@ -33,7 +33,7 @@
                     <img  alt="Logo Company" class="w-10 h-10  object-contain object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="{{ companies.logo_company.url }}">
                 {% endif %}
                 </td>
-                <td class="px-4 py-2 text-sm text-gray-900"><a class="underline decoration-solid" href="{% url 'contacts:company-detail' companies.pk %}" class="hover:text-indigo-500">{{ companies.name }}</a></td>
+                <td class="px-4 py-2 text-sm text-gray-900"><a class="underline decoration-solid" href="{% url 'companies:company-detail' companies.pk %}" class="hover:text-indigo-500">{{ companies.name }}</a></td>
                 <td class="px-4 py-2 text-sm text-gray-900">{{ companies.tax_id }}</td>
                 <td class="px-4 py-2 text-sm text-gray-900">{{ companies.website }}</td>
                 <td class="px-4 py-2 text-sm text-gray-900">{{ companies.get_industry_id_display }}</td>

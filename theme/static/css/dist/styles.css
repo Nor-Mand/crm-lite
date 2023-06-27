@@ -791,6 +791,10 @@ html{
   top: 0px;
 }
 
+.bottom-0{
+  bottom: 0px;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -1213,10 +1217,6 @@ html{
   border-width: 2px;
 }
 
-.border-4{
-  border-width: 4px;
-}
-
 .border-y{
   border-top-width: 1px;
   border-bottom-width: 1px;
@@ -1263,14 +1263,14 @@ html{
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
 }
 
-.border-red-500{
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
-}
-
 .border-teal-300{
   --tw-border-opacity: 1;
   border-color: rgb(94 234 212 / var(--tw-border-opacity));
+}
+
+.border-slate-800{
+  --tw-border-opacity: 1;
+  border-color: rgb(30 41 59 / var(--tw-border-opacity));
 }
 
 .bg-blue-500{
@@ -1343,6 +1343,11 @@ html{
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
+.bg-teal-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 246 228 / var(--tw-bg-opacity));
+}
+
 .bg-teal-400{
   --tw-bg-opacity: 1;
   background-color: rgb(45 212 191 / var(--tw-bg-opacity));
@@ -1356,6 +1361,16 @@ html{
 .bg-yellow-100{
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+
+.bg-teal-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(94 234 212 / var(--tw-bg-opacity));
+}
+
+.bg-slate-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50{
@@ -1410,16 +1425,12 @@ html{
   padding: 1.5rem;
 }
 
-.p-8{
-  padding: 2rem;
-}
-
-.p-80{
-  padding: 20rem;
-}
-
 .p-72{
   padding: 18rem;
+}
+
+.p-8{
+  padding: 2rem;
 }
 
 .px-1{
@@ -1913,6 +1924,11 @@ html{
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-teal-500:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 184 166 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-100:hover{
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
@@ -2074,28 +2090,12 @@ html{
     height: 100vh;
   }
 
-  .sm\:w-1\/6{
-    width: 16.666667%;
-  }
-
   .sm\:w-full{
     width: 100%;
   }
 
-  .sm\:w-1\/5{
-    width: 20%;
-  }
-
-  .sm\:w-2\/6{
-    width: 33.333333%;
-  }
-
   .sm\:max-w-lg{
     max-width: 32rem;
-  }
-
-  .sm\:flex-row{
-    flex-direction: row;
   }
 
   .sm\:p-0{

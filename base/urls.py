@@ -25,6 +25,7 @@ urlpatterns = [
     path('', home),
     path('crm/', include('crm.urls', namespace='crm')),
     path('contacts/', include('contacts.urls', namespace='contacts')),
+    path('companies/', include('contacts.urls', namespace='companies')),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
 

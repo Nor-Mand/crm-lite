@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView
 from .models import Partner, Companies
+from crm.models import Menus
 from .forms import ContactModelForm, CompanyModelForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -16,9 +17,11 @@ def contact_list_view(request):
             return redirect('contacts:contact-list')
     else:
         formContacts = ContactModelForm()
+    menus = Menus.objects.all().order_by('position')
     context = {
         'contacts': contacts,
-        'formContacts': formContacts
+        'formContacts': formContacts,
+        'menus': menus
     }
     return render(request, 'contact-list.html', context=context)
 
@@ -61,20 +64,23 @@ def company_list_view(request):
         formCompany = CompanyModelForm(request.POST, request.FILES)
         if formCompany.is_valid():
             formCompany.save()
-            return redirect('contacts:company-list')
+            return redirect('company:company-list')
     else:
         formCompany = CompanyModelForm()
+    menus = Menus.objects.all().order_by('position')
     context = {
         'company': company,
-        'formCompany': formCompany
+        'formCompany': formCompany,
+        'menus': menus
     }
     return render(request, 'company-list.html', context=context)
 
 
-class CompanyDetailView(LoginRequiredMixin, DetailView):
-    template_name = 'company_detail.html'
-    queryset = Companies.objects.all()
-    context_object_name = 'companies'
+# class CompanyDetailView(LoginRequiredMixin, DetailView):
+#     template_name = 'company_detail.html'
+#     queryset = Companies.objects.all()
+#     context_object_name = 'companies'
+#     print("################")
 
 
 @login_required
