@@ -7,6 +7,12 @@ CRM lite, is a short application create with Django using Postgresql as Database
 `django 4.1.3`
 `django-tailwind 3.4.0`
 
+## RUNINNING
+<ol>
+  <li>python manage.py runserver</li>
+  <li>python manage.py tailwind start</li>
+</ol>
+
 ## See the video
 https://youtu.be/xKxyIQfKOSc
 
@@ -31,5 +37,8 @@ https://youtu.be/xKxyIQfKOSc
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/kanban-dark.png)
 #### __List view
 ![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/list-dark.png)
+#### __Contact List view
+![alt text](https://github.com/Nor-Mand/crm-lite/blob/main/media/contact-dark.png)
+
 
 
